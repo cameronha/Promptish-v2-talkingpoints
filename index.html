@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking Points App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Input Section -->
+        <div class="input-section">
+            <h1>Talking Points App</h1>
+            <div id="pointsInput">
+                <input 
+                    type="text" 
+                    class="point-input" 
+                    placeholder="Point #1"
+                >
+                <input 
+                    type="text" 
+                    class="point-input" 
+                    placeholder="Point #2"
+                >
+                <input 
+                    type="text" 
+                    class="point-input" 
+                    placeholder="Point #3"
+                >
+                <input 
+                    type="text" 
+                    class="point-input" 
+                    placeholder="Point #4"
+                >
+                <input 
+                    type="text" 
+                    class="point-input" 
+                    placeholder="Point #5"
+                >
+            </div>
+            <button id="startPrompt">Done</button>
+        </div>
+
+        <!-- Display Section (initially hidden) -->
+        <div class="display-section" id="displaySection">
+            <div class="points-display" id="pointsDisplay"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

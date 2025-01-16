@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Libre Franklin', sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+}
+
+/* Input section (left side) */
+.input-section {
+    width: 25%;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+h1 {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.8;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Libre Franklin', sans-serif;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 0.95rem;
+    color: #333;
+}
+
+button {
+    background: #E98F58;
+    color: white;
+    border: none;
+    padding: 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 15px 0;
+    font-family: 'Libre Franklin', sans-serif;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+button:hover {
+    background: #d06636;
+}
+
+/* Display section (right side) */
+.display-section {
+    width: 75%;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.points-display {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.point-display {
+    flex: 1;
+    font-size: 6vw;
+    font-weight: bold;
+    padding: 20px 40px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    text-align: center;
+    max-width: 100%;
+    line-height: 1.1;
+    box-sizing: border-box;
+    min-height: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Style for placeholder text */
+.point-display.placeholder {
+    color: rgba(0, 0, 0, 0.15);
+}
+
+/* Create the gradient effect for each point */
+.point-display:nth-child(1) { background: #e3efff; }
+.point-display:nth-child(2) { background: #d6e8ff; }
+.point-display:nth-child(3) { background: #c9e1ff; }
+.point-display:nth-child(4) { background: #bcdbff; }
+.point-display:nth-child(5) { background: #afd4ff; }
+
+/* Remove the video topic display styles */
+/* Video topic display */
+.video-topic {
+    display: none;
+} 
