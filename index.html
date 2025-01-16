@@ -4,96 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talking Points App</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        .sidebar {
-            width: 250px;
-            padding: 20px;
-            background-color: #f5f5f5;
-            border-right: 1px solid #ddd;
-        }
-
-        .main-content {
-            flex: 1;
-            padding: 20px;
-            background-color: #f0f5ff;
-        }
-
-        .point-button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: none;
-            background-color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: left;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .done-button {
-            width: 100%;
-            padding: 15px;
-            background-color: #e9967a;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        .point-display {
-            font-size: 2.5em;
-            color: #666;
-            margin: 20px 0;
-        }
-
-        /* Mobile responsive styles */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid #ddd;
-            }
-
-            .main-content {
-                width: 100%;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
-            <h2>Talking Points App</h2>
-            <button class="point-button">Point #1</button>
-            <button class="point-button">Point #2</button>
-            <button class="point-button">Point #3</button>
-            <button class="point-button">Point #4</button>
-            <button class="point-button">Point #5</button>
-            <button class="done-button">Done</button>
+        <!-- Input Section -->
+        <div class="input-section">
+            <h1>Talking Points App</h1>
+            <div id="pointsInput">
+                <input 
+                    type="text" 
+                    class="point-input" 
+                    placeholder="Point #1"
+                >
+                <input 
+                    type="text" 
+                    class="point-input" 
+                    placeholder="Point #2"
+                >
+                <input 
+                    type="text" 
+                    class="point-input" 
+                    placeholder="Point #3"
+                >
+                <input 
+                    type="text" 
+                    class="point-input" 
+                    placeholder="Point #4"
+                >
+                <input 
+                    type="text" 
+                    class="point-input" 
+                    placeholder="Point #5"
+                >
+            </div>
+            <button id="startPrompt">Done</button>
         </div>
-        <div class="main-content">
-            <div class="point-display">Point #1</div>
+
+        <!-- Display Section (initially hidden) -->
+        <div class="display-section" id="displaySection">
+            <div class="points-display" id="pointsDisplay"></div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html> 
