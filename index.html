@@ -4,49 +4,249 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talking Points App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            min-height: 100vh;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 0;
+        }
+
+        .point {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dynamic gradient backgrounds */
+        .point {
+            position: relative;
+            z-index: 1;
+        }
+
+        .point::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background: var(--bg-color, #f0f5ff);
+            transition: background 0.3s ease;
+        }
+
+        .point-content {
+            font-size: 6rem;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.15);
+            outline: none;
+            text-align: center;
+            cursor: text;
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .point-content:not(:empty) {
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .point-content:focus {
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .point-content:empty:before {
+            content: attr(data-placeholder);
+        }
+
+        .point-content:focus:empty:before {
+            content: '';
+        }
+
+        @media (max-width: 768px) {
+            .point-content {
+                font-size: 4rem;
+            }
+        }
+
+        /* New header styles */
+        .header {
+            background-color: #e9967a;
+            color: white;
+            text-align: center;
+            padding: 8px 25px;
+            font-size: 0.875rem;
+            font-weight: 300;
+            border-radius: 25px;
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            white-space: nowrap;
+            z-index: 3;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Adjust first point's padding to accommodate header */
+        .point:first-child {
+            padding-top: 10px;
+        }
+
+        /* Update responsive styles */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 0.75rem;
+                padding: 6px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                font-size: 0.75rem;
+                padding: 5px 15px;
+            }
+        }
+
+        /* Update footer CTA styles */
+        .footer-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 300;
+            color: rgba(0, 0, 0, 0.4);
+            padding: 4px;
+            background: rgb(195, 218, 255);
+            z-index: 3;
+        }
+
+        .footer-cta {
+            backdrop-filter: none;
+        }
+
+        .footer-cta a {
+            color: rgb(100, 149, 237);
+            text-decoration: none;
+            font-weight: 900;
+        }
+
+        .footer-cta a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+    <div class="header">TALKING POINTS APP</div>
     <div class="container">
-        <!-- Input Section -->
-        <div class="input-section">
-            <h1>Talking Points App</h1>
-            <div id="pointsInput">
-                <input 
-                    type="text" 
-                    class="point-input" 
-                    placeholder="Point #1"
-                >
-                <input 
-                    type="text" 
-                    class="point-input" 
-                    placeholder="Point #2"
-                >
-                <input 
-                    type="text" 
-                    class="point-input" 
-                    placeholder="Point #3"
-                >
-                <input 
-                    type="text" 
-                    class="point-input" 
-                    placeholder="Point #4"
-                >
-                <input 
-                    type="text" 
-                    class="point-input" 
-                    placeholder="Point #5"
-                >
-            </div>
-            <button id="startPrompt">Done</button>
+        <div class="point">
+            <div class="point-content" contenteditable="true" data-placeholder="Point #1"></div>
         </div>
-
-        <!-- Display Section (initially hidden) -->
-        <div class="display-section" id="displaySection">
-            <div class="points-display" id="pointsDisplay"></div>
+        <div class="point">
+            <div class="point-content" contenteditable="true" data-placeholder="Point #2"></div>
+        </div>
+        <div class="point">
+            <div class="point-content" contenteditable="true" data-placeholder="Point #3"></div>
+        </div>
+        <div class="point">
+            <div class="point-content" contenteditable="true" data-placeholder="Point #4"></div>
+        </div>
+        <div class="point">
+            <div class="point-content" contenteditable="true" data-placeholder="Point #5"></div>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        document.querySelectorAll('.point-content').forEach((element, index) => {
+            element.addEventListener('focus', function() {
+                if (this.textContent.trim().startsWith('Point #')) {
+                    this.textContent = '';
+                }
+            });
+
+            element.addEventListener('blur', function() {
+                if (this.textContent.trim() === '') {
+                    this.textContent = '';
+                }
+            });
+
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const points = document.querySelectorAll('.point-content');
+                    const nextIndex = index + 1;
+                    if (nextIndex < points.length) {
+                        points[nextIndex].focus();
+                    } else {
+                        this.blur();
+                    }
+                }
+            });
+        });
+
+        /* New gradient calculation function */
+        function updateGradients() {
+            const points = document.querySelectorAll('.point');
+            const totalPoints = points.length;
+
+            points.forEach((point, index) => {
+                /* Calculate the percentage through the list for this point */
+                const percent = index / (totalPoints - 1);
+                
+                /* Base colors for gradient (from lightest to darkest) */
+                const startColor = {r: 245, g: 248, b: 255}; /* Lightest blue */
+                const endColor = {r: 195, g: 218, b: 255};   /* Darkest blue */
+
+                /* Interpolate between colors */
+                const currentColor = {
+                    r: Math.round(startColor.r + (endColor.r - startColor.r) * percent),
+                    g: Math.round(startColor.g + (endColor.g - startColor.g) * percent),
+                    b: Math.round(startColor.b + (endColor.b - startColor.b) * percent)
+                };
+
+                /* Set the background color */
+                point.style.setProperty(
+                    '--bg-color', 
+                    `rgb(${currentColor.r}, ${currentColor.g}, ${currentColor.b})`
+                );
+            });
+        }
+
+        /* Initial gradient setup */
+        updateGradients();
+
+        /* Update gradients when points are added or removed */
+        const observer = new MutationObserver(updateGradients);
+        observer.observe(document.querySelector('.container'), {
+            childList: true,
+            subtree: true
+        });
+    </script>
+
+    <div class="footer-cta">
+        Join Cam's <a href="https://www.camhouser.com/newsletter" target="_blank">newsletter</a> to get better on camera
+    </div>
 </body>
 </html> 
